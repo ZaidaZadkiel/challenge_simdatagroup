@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+    sdg_web:
+      image: node:20-buster
+      container_name: sdg_web
+      user: node
+      environment:
+        - PORT=5173
+        - CHOKIDAR_USEPOLLING=true
+      ports:
+        - 5173:5173
+        - 1239:1239
+      networks:
+        - sdg_network
+      volumes:
+        - ./sdg:/app/
+      command: sh -c "cd /app/ && echo 'docker start' && cat package.json && npm i && npm run dev && sleep infinity "
+
+networks:
+  sdg_network:
+    name: sdg_network
