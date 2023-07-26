@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Hidden from '@mui/material/Hidden';
 import Information, {InformationProps} from './Information';
+import { Paper } from '@mui/material';
 
 const data: Record<string, InformationProps['information']> = {
   '/caso1':{
@@ -124,10 +125,12 @@ const navItems = [
               information={data[location.pathname]} 
               open={showInfo} 
               onClose={toggleShowInfo}
-            />
+              />
           </Grid>
         }
-        <Outlet />
+        <Paper sx={{p:2}}>
+          <Outlet />
+        </Paper>
       </Grid>
     </Box>
     </CssBaseline>

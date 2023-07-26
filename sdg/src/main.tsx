@@ -8,7 +8,7 @@ import {
 
 import App from './App.tsx'
 import Info from './Info.tsx';
-import Caso1 from './practicas/Caso1.tsx';
+import Caso1 from './practicas/Caso1';
 import Caso2 from './practicas/Caso2.tsx';
 import Caso3 from './practicas/Caso3.tsx';
 
