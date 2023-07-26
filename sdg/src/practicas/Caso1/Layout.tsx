@@ -1,28 +1,23 @@
 import { Button, Grid, Step, StepButton, Stepper, useMediaQuery } from "@mui/material";
-import { FormEventHandler, useEffect } from "react";
+import { FormEventHandler } from "react";
 import { FocusTrap } from '@mui/base';
 import { SignupUserData } from "./Caso1";
 
 export interface SignupProcessProps{
   currentStep: number,
-  onChange: Function,
+  onChange:    Function,
   SignupSteps: LayoutProps['SignupSteps']
 }
 
-export interface SignupViewProps{
-  validations: any,
-  errors: any
-}
-
 export interface LayoutProps{
-  formdata: SignupUserData;
-  currentStep: number,
-  setCurrentStep: Function,
-  handleformdata: FormEventHandler<HTMLFormElement | HTMLInputElement>,
+  formdata:         SignupUserData;
+  currentStep:      number,
+  setCurrentStep:   Function,
+  handleformdata:   FormEventHandler<HTMLFormElement | HTMLInputElement>,
   handleformsubmit: FormEventHandler<HTMLFormElement>,
   SignupSteps: {
-    title: string,
-    content: React.ComponentType,
+    title:   string,
+    content: React.ComponentType<{visible: boolean}>,
   }[],
 }
 
@@ -38,33 +33,23 @@ const Layout: React.FunctionComponent<LayoutProps> = (
 ) => {
 
   const SignupViews = SignupSteps.map(
-        (step, index)=>(
-          <Grid
-            key={index}
-            item
-            style={{
-              display: (index===currentStep) ? 'block' : 'none',
-              gap: '2em',
-            }}
-          >
-            <step.content />
-          </Grid>
-        )
-      )
-
-  useEffect(
-    ()=>{
-      if(currentStep<0 || currentStep>=SignupSteps.length) setCurrentStep(Math.min(Math.max(currentStep, 0), SignupSteps.length-1))
-      
-    }, 
-    [currentStep]
+    (step, index)=>(
+      <Grid
+        key={index}
+        item
+        style={{
+          display: (index===currentStep) ? 'block' : 'none',
+          gap: '2em',
+        }}
+      >
+        <step.content visible={index===currentStep} />
+      </Grid>
+    )
   )
-
-
 
   return (
   <>
-      <form onChange={handleformdata} onSubmit={handleformsubmit}>
+      <form id="signupform" onChange={handleformdata} onSubmit={handleformsubmit}>
         <FocusTrap open={true}>
         <Grid container direction={"column"} gap={2}>
           

@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { ReactNode, FunctionComponent } from "react";
 
 export interface InformationProps {
@@ -30,10 +30,8 @@ const Information: FunctionComponent<InformationProps> = (
 >
   <DialogTitle id="scroll-dialog-title">Descripción del caso</DialogTitle>
       <DialogContent dividers={true}>
-          <DialogContentText>
-              <h4>{information.title}</h4>
+              <b>{information.title}</b>
               {information.content}
-          </DialogContentText>
       </DialogContent>
   <DialogActions>
       <Button variant="contained" onClick={()=>onClose()}>Cerrar</Button>
