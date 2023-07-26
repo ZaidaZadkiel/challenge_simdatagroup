@@ -2,12 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
   createHashRouter,
-  IndexRouteObject,
   RouteObject,
   RouterProvider
 } from "react-router-dom";
 
 import App from './App.tsx'
+import Info from './Info.tsx';
 import Caso1 from './practicas/Caso1.tsx';
 import Caso2 from './practicas/Caso2.tsx';
 import Caso3 from './practicas/Caso3.tsx';
@@ -24,8 +24,11 @@ const routelist : RouteObject[] = [
     errorElement: <div>Error</div>,
     children: [
       {
-        path: "caso1",
         index: true,
+        element: <Info/>
+      },
+      {
+        path: "caso1",
         element: <Caso1/>
       },
       {
@@ -36,7 +39,7 @@ const routelist : RouteObject[] = [
         path: "caso3",
         element: <Caso3/>
       },
-    ]
+    ],
   },
 ];
 
