@@ -1,0 +1,27 @@
+.tagcontainer span{
+  padding: 4pt;
+  background-color: #00501020;
+  margin-right: 4pt;
+  cursor: pointer;
+  
+  -webkit-transition: background-color 150ms linear;
+  -ms-transition: background-color 150ms linear;
+  transition: background-color 150ms linear;
+}
+
+.tagcontainer span:hover{
+  background-color: #00f01080;
+}
+
+.listcontainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2pt;
+}
+
+.listcontainer .ingredient{
+  background-color: cyan;
+  padding: 4pt;
+  text-align: center;
+}

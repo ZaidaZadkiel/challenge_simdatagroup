@@ -56,8 +56,29 @@ const data: Record<string, InformationProps['information']> = {
     title: 'App de Bebidas',
     content: (
       <>
-      <p>Crear una aplicación web móvil de bebidas usando el api TheCocktailDB </p>
-      <p>https://www.thecocktaildb.com/api.php</p>
+        <p>      
+          Crear una aplicación web móvil de bebidas usando el api TheCocktailDB<br/>
+          <a href="https://www.thecocktaildb.com/api.php">https://www.thecocktaildb.com/api.php</a><br/>
+          La aplicación debe contener lo siguiente:
+        </p>
+        <ol type="a">
+          <li>
+            <b>Sección de búsqueda</b><br/>
+            Mostrar un formulario para buscar una bebida en específico, realizar la búsqueda y mostrar los resultados mediante una lista tipo catalogo
+            Cada elemento de la lista debe contener el nombre y la imagen de la bebida, así como un enlace para poder visualizar el detalle completo de la bebida en otra página a modo detalle.
+            En el detalle mostrar información completa de la bebida, ingredientes, tags, etc.
+            La información para mostrar dependerá de los datos que el api provee y lo que el usuario considere justo mostrar
+          </li>
+          <li>
+            <b>Sección bebidas por categoría</b><br/>
+            Obtener la lista de categorías, por cada categoría mostrar al menos 4 bebidas
+            Al igual que la primera sección mostrar los elementos en una lista tipo catalogo y con su respectivo enlace para ver el detalle del registro
+          </li>
+          <li>
+            <b>Diseño UIX</b><br/>
+            El diseño es totalmente libre usando el framework MUI CORE, se tomará en cuenta experiencia de usuario al usar la aplicación, colores, propuesta, etc.
+          </li>
+        </ol>
       </>
     )
   },
@@ -78,27 +99,17 @@ function App() {
   const location = useLocation();
   const [showInfo, setShowInfo] = useState(false);
   const toggleShowInfo=()=>setShowInfo(!showInfo);
-    
-  // useEffect(() => {
-  //   axios
-  //     .get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
-  //     .then((response) => {
-  //       console.log('what?');
-  //       setCount(response.data);
-  //     })
-  //     .catch((e) => setCount(e));
-  // }, []);
 
-const navItems = [
-  <Button variant="contained" disableElevation color="secondary" href="/#/caso1"><Hidden smDown>Caso</Hidden>#1</Button>,
-  <Button variant="contained" disableElevation color="secondary" href="/#/caso2"><Hidden smDown>Caso</Hidden>#2</Button>,
-  <Button variant="contained" disableElevation color="secondary" href="/#/caso3"><Hidden smDown>Caso</Hidden>#3</Button>,
-  <Button variant="outlined"  disableElevation color="secondary" href="/#">Info</Button>
-];
+  const navItems = [
+    <Button variant="contained" disableElevation color="secondary" href="/#/caso1"><Hidden smDown>Caso</Hidden>#1</Button>,
+    <Button variant="contained" disableElevation color="secondary" href="/#/caso2"><Hidden smDown>Caso</Hidden>#2</Button>,
+    <Button variant="contained" disableElevation color="secondary" href="/#/caso3"><Hidden smDown>Caso</Hidden>#3</Button>,
+    <Button variant="outlined"  disableElevation color="secondary" href="/#">Info</Button>
+  ];
 
   return (
     <CssBaseline >
-    <Box sx={{ height:'100dvh', backgroundColor:'#1010ff20' }}>
+    <Box>
 
       <AppBar component="nav" style={{position:'unset'}}>
         <Toolbar>
@@ -128,7 +139,7 @@ const navItems = [
               />
           </Grid>
         }
-        <Paper sx={{p:2}}>
+        <Paper sx={{p:2, whiteSpace:'normal', wordWrap:'break-word'}}>
           <Outlet />
         </Paper>
       </Grid>
