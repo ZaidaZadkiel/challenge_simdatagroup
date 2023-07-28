@@ -10,8 +10,8 @@ const Main = ({recent})=>{
         Recently viewed:
       {recent
         ? Object.values(recent).map(
-          (x)=><div>
-            {x.idDrink}: <Link to={`view/${x.idDrink}`}>{x && x.strDrink}</Link>
+          (x, index)=><div key={index}>
+            {x.idDrink}: <Link  to={`view/${x.idDrink}`}>{x && x.strDrink}</Link>
           </div>
         )
         : 'Nothing here'

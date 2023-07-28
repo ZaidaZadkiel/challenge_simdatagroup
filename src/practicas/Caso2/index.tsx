@@ -6,7 +6,7 @@ import Search from "./Search";
 import Main from "./Main";
 import { urls } from "./Caso2";
 import axios from "axios";
-
+import { DrinksContext, DrinksProvider } from "./DrinksContext";
 
 function Caso2({}){
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function Caso2({}){
   console.log('m', {getstate});
 
   return (
-      
+    <DrinksProvider >
     <Routes>
       <Route path="/*" element={<Layout />}>
         <Route index element={<Main recent={recent} />}/>
@@ -60,6 +60,7 @@ function Caso2({}){
         <Route path="view/:id" element={<GlassView glass={getstate && getstate.idDrink && recent[getstate.idDrink]} />}/>
       </Route>
     </Routes>
+    </DrinksProvider>
       
   )
 }
