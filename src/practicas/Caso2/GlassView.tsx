@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { glass, urls } from "./Caso2"
 import './caso2.css';
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Skeleton } from "@mui/material";
-import axios from "axios";
+import { useDrinks } from "./DrinksContext";
 
 const translationList = [
   ['strInstructions',        "English"],
@@ -35,11 +34,22 @@ const ingredientList= [
 
 export const GlassView = ({glass})=>{
   const params = useParams()
-  const data = (glass || {});
+  const api = useDrinks()
+  const [data, setdata] = useState(glass || {});
   const [translation, setTranslation] = useState<string>('strInstructions')
   console.log('glas', params, {glass}, data?.idDrink)
 
-  //TODO: get fresh copy or cache from idDrink
+  useEffect(
+    ()=>{
+      if(!glass){
+        console.log(params.id)
+        if(params.id){
+          api.glasses.lookup(params.id).then(glass=>setdata(glass.drinks[0]))
+        }
+      }
+    }, 
+    [glass, params]
+  )
 
   if(!data?.idDrink){
     return (
@@ -54,7 +64,7 @@ export const GlassView = ({glass})=>{
 
   return(
     <div>
-      {JSON.stringify(params)}
+      {/* {JSON.stringify(params)} */}
       <div>id: {data.idDrink}</div>
       <div>name: {data.strDrink} {data.strDrinkAlternate && `(${data.strDrinkAlternate})`}</div>
       <div className="tagcontainer">

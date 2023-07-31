@@ -14,7 +14,7 @@ import Information, {InformationProps} from './Information';
 import { Paper } from '@mui/material';
 
 const data: Record<string, InformationProps['information']> = {
-  '/caso1':{
+  'caso1':{
     title: 'Formulario de Signup',
     content: (
     <>
@@ -52,7 +52,7 @@ const data: Record<string, InformationProps['information']> = {
     </>
     )
   },
-  '/caso2':{
+  'caso2':{
     title: 'App de Bebidas',
     content: (
       <>
@@ -82,7 +82,7 @@ const data: Record<string, InformationProps['information']> = {
       </>
     )
   },
-  '/caso3':{
+  'caso3':{
     title:'',
     content:(
       <>
@@ -133,7 +133,7 @@ function App() {
           <Grid item md>
             <Button onClick={toggleShowInfo}>info</Button>
             <Information 
-              information={data[location.pathname]} 
+              information={data[(location.pathname).split('/')[1]]} 
               open={showInfo} 
               onClose={toggleShowInfo}
               />

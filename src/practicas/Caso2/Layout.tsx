@@ -9,11 +9,11 @@ const Layout = ({}) => {
   return (
   <div>
       <Button href="/#/caso2/">Home</Button>
-      <Button href="/#/caso2/view">View</Button>
+      {/* <Button href="/#/caso2/view">View</Button> */}
       <Button href="/#/caso2/search">Search</Button>
       <br/>
-      {JSON.stringify(location)}<br/>
-      {JSON.stringify(drinks)}<br/>
+      {/* {JSON.stringify(location)}<br/>
+      {JSON.stringify(drinks)}<br/> */}
       <Outlet />
   </div>
   );

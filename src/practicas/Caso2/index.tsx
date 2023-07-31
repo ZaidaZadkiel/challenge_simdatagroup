@@ -30,23 +30,23 @@ function Caso2({}){
   useEffect(() => {
     if(getstate != null) return;
 
-    axios
-      .get(urls.random())
-      .then((res) => {
-        if(res.status != 200){ throw res.data };
-        console.log('res', res.data.drinks);
-        setstate(res.data.drinks[0])
-        setrecent(res.data.drinks[0])
-        if(res.data.drinks[0].idDrink){
-          console.log('nav')
-          return navigate(`view/${res.data.drinks[0].idDrink}`);
-        } 
-      })
-      .catch(
-        (e)=>{
-          console.error(e)
-        }
-      );
+    // axios
+    //   .get(urls.random())
+    //   .then((res) => {
+    //     if(res.status != 200){ throw res.data };
+    //     console.log('res', res.data.drinks);
+    //     setstate(res.data.drinks[0])
+    //     setrecent(res.data.drinks[0])
+    //     if(res.data.drinks[0].idDrink){
+    //       console.log('nav')
+    //       return navigate(`view/${res.data.drinks[0].idDrink}`);
+    //     } 
+    //   })
+    //   .catch(
+    //     (e)=>{
+    //       console.error(e)
+    //     }
+    //   );
   }, []);
 
   console.log('m', {getstate});
