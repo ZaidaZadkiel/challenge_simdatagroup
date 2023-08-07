@@ -14,7 +14,8 @@ const initialValue = {
   },
   'ingredients': {
     list:   async ()    =>await get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'),
-    search: async (iid) =>await get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${iid}`),
+    search: async (str) =>await get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${str}`),
+    lookup: async (iid) =>await get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${iid}`),
   },
   'alcoholic':{
     list:   async ()   =>await get('https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list'),
